@@ -1,0 +1,120 @@
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* The whole bar */
+#waybar {
+    background-color: rgba(33,34,44,0.6);
+    color: #ffffff;
+    font-family: Cantarell, Noto Sans, sans-serif;
+    font-size: 14px;
+}
+
+/* Each module */
+#battery,
+#clock,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#tray {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+
+/* -----------------------------------------------------------------------------
+ * Module styles
+ * -------------------------------------------------------------------------- */
+
+#battery.warning {
+    color: #cc241d ;
+}
+
+#battery.critical {
+    color: #cc241d;
+}
+
+#clock {
+    font-weight: bold;
+}
+
+#mode {
+    background-color: #282828;
+}
+
+#network {
+    /* No styles */
+}
+
+#network.disconnected {
+    color: #d65d8e;
+}
+
+#pulseaudio {
+    /* No styles */
+}
+
+#pulseaudio.muted {
+    /* No styles */
+}
+
+#custom-spotify {
+    color: rgb(102, 220, 105);
+}
+
+#temperature {
+    /* No styles */
+}
+
+#temperature.critical {
+    color: red;
+}
+
+#tray {
+    /* No styles */
+}
+
+#window {
+    margin-left: 32px;
+    margin-right: 32px;
+    font-weight: bold;
+}
+
+#workspaces button {
+    padding-top: 2px;
+    padding-bottom:2px; 
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+#workspaces button label{
+    color: #ffffff;
+}
+#workspaces button.focused label {
+    color: #1d2021;
+}
+#workspaces button.focused {
+    background: #ffffff; 
+}
+
+#workspaces button:hover {
+  background: #323232;
+  box-shadow: inherit;
+  text-shadow: inherit;
+}
+
+#workspaces button.focused {
+    color: white;
+    background-color: #ffffff;
+}
+
+#workspaces button.urgent {
+    border-color: #c9545d;
+    color: #c9545d;
+}
+

@@ -1,12 +1,17 @@
 font pango:Cantarell 14px
+
 output * background "$HOME/.config/wallpapers/forest.png" fill
+
 bar {
   position top
   strip_workspace_numbers yes
   swaybar_command waybar
 }
+
 client.focused #a0a0a0 #a0a0a0 #a0a0a0 #a0a0a0 
 client.unfocused #000000 #000000 #000000 #000000 
+
 default_border pixel 2
+
 gaps inner 14
 smart_gaps on
