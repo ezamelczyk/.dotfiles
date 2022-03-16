@@ -1,4 +1,4 @@
-font pango:Cantarell 14px
+font pango:Noto Sans Display 14px
 
 output * background "$HOME/.config/wallpapers/forest.png" fill
 

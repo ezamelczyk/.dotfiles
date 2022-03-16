@@ -10,18 +10,21 @@
 #waybar {
     background-color: rgba(33,34,44,0.6);
     color: #ffffff;
-    font-family: Cantarell, Noto Sans, sans-serif;
+    font-family: Noto Sans Display, sans-serif;
     font-size: 14px;
 }
 
 /* Each module */
+#disk,
+#memory,
 #battery,
-#clock,
 #mode,
 #network,
 #pulseaudio,
 #temperature,
 #tray {
+    color: #ffffff;
+    margin-right: 8px;
     padding-left: 8px;
     padding-right: 8px;
 }
@@ -43,8 +46,12 @@
     font-weight: bold;
 }
 
-#mode {
-    background-color: #282828;
+#clock.time {
+    padding-right:4px;
+}
+
+#clock.date {
+    margin-right: 10px;
 }
 
 #network {

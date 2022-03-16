@@ -18,3 +18,5 @@ include $HOME/.config/sway/for_windows
 include $HOME/.config/sway/bindings
 include $HOME/.config/sway/style
 include $HOME/.config/sway/workspaces
+
+exec kanshi
