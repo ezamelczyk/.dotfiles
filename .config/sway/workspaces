@@ -1,0 +1,13 @@
+set $ws_firefox 1: Firefox
+set $ws_terminal 2: Terminal
+set $ws_studio 3: Android Studio
+set $ws_slack 4: Slack
+bindsym $mod+1 workspace $ws_firefox
+bindsym $mod+2 workspace $ws_terminal
+bindsym $mod+3 workspace $ws_studio
+bindsym $mod+4 workspace $ws_slack
+
+assign [class="firefox"] $ws_firefox
+assign [app_id="foot"] $ws_terminal
+assign [class="jetbrains-studio"] $ws_studio
+assign [class="Slack"] $ws_slack

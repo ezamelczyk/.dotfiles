@@ -1,108 +1,18 @@
 xwayland enable
-font pango:Cantarell 14px
-set $mod Mod4
-set $left h
-set $down j
-set $up k
-set $right l
-set $term foot
-set $menu wofi -S run
 
 input type:touchpad {
   natural_scroll enabled
   tap enabled
 }
 
-bindsym $mod+Return exec $term
-bindsym $mod+Shift+q kill
-bindsym $mod+d exec $menu
-floating_modifier $mod normal
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-set $ws_firefox 1: Firefox
-set $ws_terminal 2: Terminal
-set $ws_studio 3: Android Studio
-bindsym $mod+1 workspace $ws_firefox
-bindsym $mod+2 workspace $ws_terminal
-bindsym $mod+3 workspace $ws_studio
-bindsym $mod+4 workspace number 4
-
-bindsym $mod+Shift+4 move container to workspace number 4
-
-assign [class="firefox"] $ws_firefox
-assign [app_id="foot"] $ws_terminal
-assign [class="jetbrains-studio"] $ws_studio
-for_window [title="Picture-in-Picture"] floating enabled
-
-bindsym $mod+b splith
-bindsym $mod+v splitv
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-bindsym $mod+f fullscreen
-bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
-bindsym $mod+a focus parent
-bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
-
-mode "resize" {
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
-
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
-
-bindsym XF86AudioRaiseVolume exec pamixer -ui 2 && pamixer --get-volume > $WOBSOCK
-bindsym XF86AudioLowerVolume exec pamixer -ud 2 && pamixer --get-volume > $WOBSOCK
-bindsym XF86AudioMute exec pamixer --toggle-mute && ( pamixer --get-mute && echo 0 > $WOBSOCK ) || pamixer --get-volume > $WOBSOCK
-bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
-bindsym XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
-
-bar {
-  position top
-  strip_workspace_numbers yes
-  swaybar_command waybar
-}
-
-exec --no-startup-id oguri
-
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 exec mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 
-client.focused #a0a0a0 #a0a0a0 #a0a0a0 #a0a0a0 
-client.unfocused #000000 #000000 #000000 #000000 
+bindswitch --reload --locked lid:on output eDP-1 disable
+bindswitch --reload --locked lid:off output eDP-1 enable
 
 include /etc/sway/config.d/*
-
-exec swayblur -a 4 -b 5
-default_border pixel 2
-gaps inner 14
-smart_gaps on
+include $HOME/.config/sway/for_windows
+include $HOME/.config/sway/bindings
+include $HOME/.config/sway/style
+include $HOME/.config/sway/workspaces
