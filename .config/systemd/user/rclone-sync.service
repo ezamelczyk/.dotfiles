@@ -1,0 +1,9 @@
+[Unit] 
+Description=Sync keepass 
+
+[Service] 
+Type=simple 
+ExecStart=/home/ernest/.scripts/rclone-sync.sh
+
+[Install]
+WantedBy=default.target

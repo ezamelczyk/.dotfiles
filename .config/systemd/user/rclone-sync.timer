@@ -1,0 +1,11 @@
+[Unit]
+Description=Run keepass sync every 5 minutes
+
+[Timer]
+Persistent=true
+OnBootSec=60
+OnUnitActiveSec=300
+Unit=rclone-sync.service
+
+[Install]
+WantedBy=timers.target
