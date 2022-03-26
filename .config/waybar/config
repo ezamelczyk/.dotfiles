@@ -12,26 +12,23 @@
     // -------------------------------------------------------------------------
 
     "layer": "top",
-
     "position": "top",
     "height": 25,
-
     "modules-left": [
-        "sway/workspaces",
-        "sway/mode"
+        "sway/workspaces"
     ],
     "modules-center": [
         "sway/window"
     ],
     "modules-right": [
-    "tray",
-    "disk",
-    "memory",
-    "network",
-    "pulseaudio", 
-    "battery", 
-    "clock#time",
-    "clock#date"
+        "tray",
+        "disk",
+        "memory",
+	"bluetooth",
+        "network",
+        "pulseaudio", 
+        "battery", 
+        "clock"
     ],
 
 
@@ -43,10 +40,8 @@
         "states": {
             "critical": 10
         },
-        // Connected to AC
-        "format": "  {icon}  {capacity}%", // Icon: bolt
-        // Not connected to AC
-        "format-discharging": "{icon}  {capacity}%",
+        "format": " {icon}",
+        "format-discharging": "{icon}",
         "format-icons": [
             "", // Icon: battery-full
             "", // Icon: battery-three-quarters
@@ -54,43 +49,46 @@
             "", // Icon: battery-quarter
             ""  // Icon: battery-empty
         ],
+	"tooltip-format":"{capacity}%, {time}",
         "tooltip": true
+    },
+
+    "bluetooth": {
+	"interval": 30,
+	"format": "{icon}",
+	"format-icons": {
+		"enabled": "",
+		"disabled": ""
+	},
+	"tooltip-format": "{status}"
     },
 
     "disk": {
         "format": " {free}",
-	"path": "/"
+	"path": "/home"
     },
 
     "memory": {
         "format": " {used:0.1F}GiB/{total:0.1F}GiB"
     },
 
-    "clock#time": {
+    "clock": {
         "interval": 1,
-        "format": "{:%H:%M}",
-        "tooltip": false
+        "format": "{:%e %b %Y %H:%M}"
     },
-
-    "clock#date": {
-      "interval": 10,
-      "format": "{:%e %b %Y}",
-      "tooltip-format": "{:%e %B %Y}",
-    },
-
 
     "network": {
         "interval": 5,
-        "format-wifi": "  {essid}", // Icon: wifi
-        "format-ethernet": "  {ipaddr}", // Icon: ethernet
+        "format-wifi": "",
+        "format-ethernet": "",
         "format-disconnected": "⚠  Disconnected",
-        "tooltip-format": "{ifname}: {ipaddr}"
+        "tooltip-format": "{essid}: {ipaddr}"
     },
 
     "pulseaudio": {
         "scroll-step": 1,
-        "format": "{icon}  {volume}%",
-        "format-muted": "  Muted", // Icon: volume-mute
+        "format": "{icon}",
+        "format-muted": "", // Icon: volume-mute
         "format-icons": {
             "headphones": "", // Icon: headphones
             "handsfree": "", // Icon: headset
@@ -98,14 +96,9 @@
             "phone": "", // Icon: phone
             "portable": "", // Icon: phone
             "car": "", // Icon: car
-            "default": ["", ""] // Icons: volume-down, volume-up
+            "default": ["", "", ""] // Icons: volume-down, volume-up
         },
         "tooltip": true
-    },
-
-    "sway/mode": {
-        "format": "{}",
-        "tooltip": false
     },
 
     "sway/window": {
@@ -123,37 +116,12 @@
 	    "1": " ",
             "2": "",
             "3": "",
+	    "4": "",
+	    "5": "",
             "urgent": "",
             "focused": "",
             "default": ""
         }
-    },
-
-
-    "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-        "interval": 2,
-        "consume-icons": {
-            "on": " " // Icon shows only when "consume" is on
-        },
-        "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
-            "on": " "
-        },
-        "repeat-icons": {
-            "on": " "
-        },
-        "single-icons": {
-            "on": "1 "
-        },
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
     },
 
     "tray": {
